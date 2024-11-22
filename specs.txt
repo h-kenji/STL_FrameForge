@@ -1,0 +1,3 @@
+pre_seq_lenght=20
+aft_seq_lenght=10
+#model=
