@@ -35,6 +35,9 @@ Certify that your workspace follows the directory structure outlined above so th
 ```
 OpenSTL/
 ├── STL_FrameForge/                     # Main directory for STL Frame Forge
+│   ├── README.md                       # Script for training the model
+│   ├── train.ipynb                     # Script for training the model
+│   ├── specs.txt                       # Script for training the model
 │   ├── train.py                        # Script for training the model
 │   ├── reconstruct.py                  # Script for video signal reconstruction
 │   ├── core/                           # Configuration files for the project
