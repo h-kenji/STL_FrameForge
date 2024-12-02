@@ -30,41 +30,41 @@ git clone https://github.com/h-kenji/STL_FrameForge
 ```
 Ensure the environment is properly set up, as all dependencies required by STL Frame Forge are included in the Conda environment defined by OpenSTL.
 
-Certify that your workspace follows the directory structure outlined above so the scripts can run properly.
+Certify that your workspace follows the directory structure outlined above so the scripts can run properly as it is.
 
 ```
 OpenSTL/
 ├── STL_FrameForge/                     # Main directory for STL Frame Forge
-│   ├── README.md                       # Script for training the model
-│   ├── train.ipynb                     # Script for training the model
-│   ├── specs.txt                       # Script for training the model
+│   ├── README.md                       # This file
 │   ├── train.py                        # Script for training the model
 │   ├── reconstruct.py                  # Script for video signal reconstruction
-│   ├── core/                           # Configuration files for the project
-│   │   ├── __init__.py                 # Pretrained models or model definitions
-│   │   ├── dummy_videos.py             # Directory to store datasets
-│   │   ├── frame_analysis.py           # Helper functions and utilities
-│   │   ├── npy2avi.py                  # Helper functions and utilities
-│   │   ├── out_rebuilder.py            # Helper functions and utilities
-│   │   ├── read_spec_file.py           # Helper functions and utilities
-│   │   └── video_analyser.py           # Outputs of training and reconstruction
-│   ├── prepare_test_data/              # Configuration files for the project
-│   │   └── analyser.py                 # Outputs of training and reconstruction
-│   └── utils/                          # Configuration files for the project
-│       ├── compare.py                  # Helper functions and utilities
-│       ├── prepare_train_data/         # Helper functions and utilities
-│       │   ├── segments                # Helper functions and utilities
-│       │   |   └── data_split.py       # Helper functions and utilities
-│       |   └── slice_n_frames.py       # Helper functions and utilities
-│       └── simulate_error/             # Helper functions and utilities
-│           ├── simulate_error.py       # Helper functions and utilities
-│           └── simulate_error.py       # Helper functions and utilities
+│   ├── train.ipynb                     # Notebook for running the train script on a Jupyter Kernel
+│   ├── specs.txt                       # Specifications for training and reconstruct scripts (currently not in use)
+│   ├── core/                           # Core modules for main scripts functionality
+│   │   ├── __init__.py                 # Initializes the `core` module as a package
+│   │   ├── dummy_videos.py             # Dummy video generator
+│   │   ├── frame_analysis.py           # Frame analysis 
+│   │   ├── npy2avi.py                  # Converts .npy files to .avi format
+│   │   ├── out_rebuilder.py            # Rebuilds output files for post-processing
+│   │   ├── read_spec_file.py           # Reads specification files (currently not in use)
+│   │   └── video_analyser.py           # Performs frame by frame video analysis
+│   ├── prepare_test_data/              # Prepares data for testing
+│   │   └── analyser.py                 # Analyzes test data before reconstruction or analysis
+│   └── utils/                          # Utility scripts for preparing train data, comparing reconstruct video and simulating error in video
+│       ├── compare.py                  # Compares reconstruct video with corrupted one
+│       ├── prepare_train_data/         # Training data preparation
+│       │   ├── segments/               # Contains tools for segmenting training data
+│       │   │   └── data_split.py       # Splits training data and dumps it into train and val dirs
+│       │   └── slice_n_frames.py       # Slices training input in slices with N frames and dumps into segments dir
+│       └── simulate_error/             # Simulates errors for testing
+│           └── simulate_error.py       # Substitutes specified normal frames with black frames in a video
 ...
 ```
  
 ## Usage
 ### Training
-Run **`train.py`** to train the model.
+Before training the model with **`train.py`**, you need to prepare the training data.
+1. 
 ### Reconstruction: Use reconstruct.py for complete signal reconstruction.
 Ensure that the environment is activated before executing any scripts:
 
