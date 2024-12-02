@@ -14,7 +14,7 @@ To set up the project environment, follow these steps:
 ### Step 1: Install OpenSTL  
 Use the installation instructions provided in the [OpenSTL GitHub repository](https://github.com/chengtan9907/OpenSTL) to configure the base environment:  
 
-```
+```bash
 git clone https://github.com/chengtan9907/OpenSTL
 cd OpenSTL
 conda env create -f environment.yml
@@ -24,7 +24,7 @@ python setup.py develop
 ### Step 2: Set Up STL Frame Forge
 Clone the STL Frame Forge repository into the OpenSTL directory:
 
-```
+```bash
 cd OpenSTL
 git clone https://github.com/h-kenji/STL_FrameForge
 ```
@@ -64,7 +64,35 @@ OpenSTL/
 ## Usage
 ### Training
 Before training the model with **`train.py`**, you need to prepare the training data.
-1. 
+1. The training video must be contained in a single file, regardless of its length, and placed in the STL_FrameForge/utils/prepare_train_data dir. In this point, you must define how much frames will be used as **`pre_seq_length`** (frames given as input) and how much will be used as **`aft_seq_length`** (output frames/max. of frames to be reconstructed). The sum of both values will be **N**.
+The **`slice_N_frames.py`** script will take the "input.mp4" file as input as default, but you can modify the script as you wish, or simply rename the video. Run **`slice_N_frames.py`**
+```bash
+cd STL_FrameForge/utils/prepare_train_data
+python slice_N_frames.py
+```
+2. Go to the segments dir and filter the segments as you wish. Is desirable to delete the last one, because it might have less than N frames and if so, it will be a problem while translating all segments into one array in next steps. When all done, run **`data_split.py`**. You can also edit the script to change the proportion, that by default is 80% train and 20% val.
+```bash
+cd segments
+python data_split.py
+``` 
+3. Now the data is ready. You can run either **`train.py`** or **`train.ipynb`**. The notebook file was made because some troubles happened while running **`train.py`** (we presume it's due lack of computational resources).
+You can change the model configs, hyperparameters and the training parameters in the **`custom_training_config`** and **`custom_model_config`** dictionaries declaration within both scripts. Also change **`pre_seq_length`** and **`aft_seq_length`** to match the **N** value defined in step 1.
+
+  - Training with **`train.ipynb`**:
+
+Note: jupyter-notebook isn't installed by default in the STL conda env. If you choose to use **`train.ipynb`**, you'll need to install it
+```bash
+pip install notebook
+cd /STL_FrameForge
+jupyter-notebook
+```
+  - Training with **`train.py`**:
+```bash
+cd /STL_FrameForge
+python train.py
+``` 
+
+
 ### Reconstruction: Use reconstruct.py for complete signal reconstruction.
 Ensure that the environment is activated before executing any scripts:
 
