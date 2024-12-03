@@ -13,7 +13,7 @@
 
 
 ## Overview  
-**STL Frame Forge** is a project aimed at reconstructing video signals using the OpenSTL library and additional Python scripts. The project provides two main scripts:  
+**STL FrameForge** is a project aimed at reconstructing video signals using the OpenSTL library and additional Python scripts. The project provides two main scripts:  
 1. **`train.py`**: For training the model.  
 2. **`reconstruct.py`**: For performing complete signal reconstruction.  
 
