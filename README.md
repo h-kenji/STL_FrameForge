@@ -1,4 +1,4 @@
-# STL Frame Forge  
+# STL FrameForge  
 
 ## Overview  
 **STL Frame Forge** is a project aimed at reconstructing video signals using the OpenSTL library and additional Python scripts. The project provides two main scripts:  
@@ -21,19 +21,19 @@ conda env create -f environment.yml
 conda activate OpenSTL
 python setup.py develop
 ```
-### Step 2: Set Up STL Frame Forge
-Clone the STL Frame Forge repository into the OpenSTL directory:
+### Step 2: Set Up STL FrameForge
+Clone the STL FrameForge repository into the OpenSTL directory:
 
 ```bash
 git clone https://github.com/h-kenji/STL_FrameForge
 ```
-Ensure the environment is properly set up, as all dependencies required by STL Frame Forge are included in the Conda environment defined by OpenSTL.
+Ensure the environment is properly set up, as all dependencies required by STL FrameForge are included in the Conda environment defined by OpenSTL.
 
 Certify that your workspace follows the directory structure outlined above so the scripts can run properly as it is.
 
 ```
 OpenSTL/
-├── STL_FrameForge/                     # Main directory for STL Frame Forge
+├── STL_FrameForge/                     # Main directory for STL FrameForge
 │   ├── README.md                       # This file
 │   ├── train.py                        # Script for training the model
 │   ├── reconstruct.py                  # Script for video signal reconstruction
