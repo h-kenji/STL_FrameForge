@@ -25,7 +25,6 @@ python setup.py develop
 Clone the STL Frame Forge repository into the OpenSTL directory:
 
 ```bash
-cd OpenSTL
 git clone https://github.com/h-kenji/STL_FrameForge
 ```
 Ensure the environment is properly set up, as all dependencies required by STL Frame Forge are included in the Conda environment defined by OpenSTL.
@@ -93,9 +92,24 @@ python train.py
 ``` 
 
 
-### Reconstruction: Use reconstruct.py for complete signal reconstruction.
-Ensure that the environment is activated before executing any scripts:
+### Reconstruction
+After training the model, the best checkpoint should be saved at **`work_dirs/custom_exp/checkpoints/best.ckpt`**. If you already have the pretrained model from an early training proccess, please place it in the **`work_dirs/custom_exp/checkpoints/`** dir.
 
+The **`reconstruct.py`** script will iterate through each frame of a video and will identify if it is corrupted with the **`core/frame_analysis.py`** module. In this first version, we adopted a simplified function into this module that will identify only black frames as corrupt frames. Thus, to simulate an error in a video, you can use **`utils/simulate_error/simulate_error.py`** script, that will substitute specified normal frames with black frames in the input video.
+
+It's important to explain that the **`reconstruct.py`** script will reconstruct the video only if it notices a corrupted frame through the **`frame_analysis.py`** modules. This way we can aim to utilize the same logic in a video stream.
+
+1. Place the input video in the main directory.
+2. Open **`reconstruct.py`** to change the variables as you wish. Be sure to adjust the **`input_file`** name, **`X`** as the **`pre_seq_length`** defined and **`Y`** as the **`aft_seq_length`**. Also, if a differente **`model`** is being utilized, adjust it.
+3. Run **`reconstruct.py`**
 ```bash
-conda activate OpenSTL
+python reconstruct.py
 ```
+If the script detects any corrupt frame, it will reconstruct the video and save it in main dir as **`output.avi`**
+
+### Comparison
+With **`utils/compare.py`** script, you can generate a video that puts both corrupted and reconstructed videos side-by-side to be visual comparison.
+
+
+
+
